@@ -16,6 +16,12 @@
 # along with BingTranslator. If not, see <http://www.gnu.org/licenses/>.
 
 
+import os
+import tempfile
+
+import requests
+
+
 class TextUtils(object):
     @staticmethod
     def change_key(dict_o, old_key, new_key, value):
@@ -34,28 +40,31 @@ class TextUtils(object):
         return formatted
 
 
-class DownloadAudio(object):
-    @staticmethod
-    def download(self, url, path, name_audio):
-        """
-            Params:
+def download_audio(url, media_path=None):
+    """
+    Params:
 
-                ::url = Comprises the url used to download the audio.
-                ::path =  Comprises the location where the file should be saved.
-                ::name_audio = Is the name of the desired audio.
-            
-            Definition:
+        ::url = Comprises the url used to download the audio.
+        ::path =  Comprises the location where the file should be saved.
+        ::name_audio = Is the name of the desired audio.
 
-            Basically, we do a get with the requests module and after that 
-            we recorded in the desired location by the developer or user, 
-            depending on the occasion.
-        """
-        if path is not None:
-            with open(str(path+name_audio), 'wb') as handle:
-                response = requests.get(url, stream = True)
-                if not response.ok:
-                    raise Exception("Error in audio download.")
-                for block in response.iter_content(1024):
-                    if not block:
-                        break
-                    handle.write(block)
+    Definition:
+
+    Basically, we do a get with the requests module and after that
+    we recorded in the desired location by the developer or user,
+    depending on the occasion.
+    """
+    if media_path is None:
+        tfd, media_path = tempfile.mkstemp(prefix='BingTranslate_')
+        os.close(tfd)
+
+    with open(media_path, 'wb') as handle:
+        response = requests.get(url, stream=True)
+        if not response.ok:
+            raise Exception("Error in audio download.")
+        for block in response.iter_content(1024):
+            if not block:
+                break
+            handle.write(block)
+
+    return media_path

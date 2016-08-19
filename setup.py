@@ -6,18 +6,18 @@ def read(fname):
 
 setup(
     name="BingTranslator",
-	packages = ["BingTranslator"],
-	version = '0.1',
-	description = "Micrososft Translator API V2 for Python",
-	long_description = read("README.rst"),
-	author = "Will Filho",
-	author_email = "dookgulliver@willfilho.com",
-	license = "LGPL",
-	install_requires = ["requests"],
-	keywords = "microsoft translator bing",
-	url = "https://github.com/dookgulliver/BingTranslator",
-	classifiers = [
-		"Development Status :: 5 - Production/Stable",
+    packages = ["BingTranslator"],
+    version = '0.0.1',
+    description = "Micrososft Translator API V2 for Python",
+    long_description = read("README.md"),  # TODO: replace with rst
+    author = "Will Filho",
+    author_email = "dookgulliver@willfilho.com",
+    license = "LGPL",
+    install_requires = ["requests"],
+    keywords = "microsoft translator bing",
+    url = "https://github.com/dookgulliver/BingTranslator",
+    classifiers = [
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
         "Natural Language :: English",
@@ -27,5 +27,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
-		],
+        ],
 )

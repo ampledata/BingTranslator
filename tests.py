@@ -24,20 +24,20 @@ CLIENT_SECRET = "RWfmb4O7eO3zbnlTqZaPu8cBmMthaXkonxQA9sQnQ+0="
 
 
 class TestAll(unittest.TestCase):
-	def setUp(self):
-		self.translator = Translator(CLIENT_ID, CLIENT_SECRET)
+    def setUp(self):
+        self.translator = Translator(CLIENT_ID, CLIENT_SECRET)
 
-	def test_detect_language(self):
-		lang_detect = self.translator.detect("Hello World")
-		self.assertEqual("en", lang_detect)
+    def test_detect_language(self):
+        lang_detect = self.translator.detect("Hello World")
+        self.assertEqual("en", lang_detect)
 
-	def test_detect_languages(self):
-		langs_detected = self.translator.detect_texts(["Hello World","Voe sem parar."])
-		self.assertEqual(["en","pt"], langs_detected)
+    def test_detect_languages(self):
+        langs_detected = self.translator.detect_texts(["Hello World","Voe sem parar."])
+        self.assertEqual(["en","pt"], langs_detected)
 
-	def test_translate_method(self):
-		trans = self.translator.translate("Oi", "en")
-		self.assertEqual("Hi", trans)
+    def test_translate_method(self):
+        trans = self.translator.translate("Oi", "en")
+        self.assertEqual("Hi", trans)
 
 if __name__ == "__main__":
-	unittest.main()
+    unittest.main()
